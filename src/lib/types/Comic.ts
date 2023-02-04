@@ -1,5 +1,6 @@
 
-interface Comic {
+export type Comic = {
+    id: number,
     title: string,
     description: string,
     volume: number,
@@ -8,10 +9,11 @@ interface Comic {
     pages: number,
     isbn: number,
     cover_url: string,
+    authors: Author[]
 }
 
 interface Serie {
-    name: string
+    serie_name: string
     collection: Collection
 }
 
@@ -21,5 +23,10 @@ interface Collection {
 }
 
 interface Editor {
+    name: string
+}
+
+interface Author {
+    id: number,
     name: string
 }
