@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div.multiselect {
+    border: var(--sms-border, 1pt solid lightgray);
+    border-radius: var(--sms-border-radius, 3pt);
+    padding: var(--sms-padding, 0 3pt);
+    background: hsl(var(--b1));
+    color: var(--sms-text-color);
+    min-height: var(--sms-min-height, 22pt);
+    width: var(--sms-width);
+    margin: var(--sms-margin);
+    font-size: var(--sms-font-size, inherit);
+}

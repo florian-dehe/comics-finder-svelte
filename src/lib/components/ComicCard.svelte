@@ -11,7 +11,7 @@
 		<div class="card-body">
 			<p class="text-lg">
 				<span class="text-primary font-bold">
-					{data.serie.serie_name}
+					{data.serie_info.name}
 				</span>
 				<br>
 				<span class="text-secondary font-semibold">

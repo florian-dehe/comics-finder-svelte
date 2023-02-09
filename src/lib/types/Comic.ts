@@ -4,29 +4,36 @@ export type Comic = {
     title: string,
     description: string,
     volume: number,
-    serie: Serie,
+    serie: number,
+    serie_info: Serie,
     release_date: string,
     pages: number,
     isbn: number,
     cover_url: string,
-    authors: Author[]
+    authors: number[],
+    authors_info: Author[]
 }
 
-interface Serie {
-    serie_name: string
-    collection: Collection
-}
-
-interface Collection {
+export interface Serie {
+    id: number,
     name: string,
-    editor: Editor
+    collection: number,
+    collection_info: Collection
 }
 
-interface Editor {
+export interface Collection {
+    id: number,
+    name: string,
+    editor: number,
+    editor_info: Editor
+}
+
+export interface Editor {
+    id: number,
     name: string
 }
 
-interface Author {
+export interface Author {
     id: number,
     name: string
 }

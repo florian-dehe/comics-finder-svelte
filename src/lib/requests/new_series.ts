@@ -1,0 +1,19 @@
+import { fail } from "@sveltejs/kit";
+import { makePost } from "./common";
+import { seriesSuccess } from "./form_results";
+
+export const newSeriesFormAction = async function(formData: FormData) {
+    const dataToSend = {
+        'name': formData.get('series_name'),
+        'collection': formData.get('collection_id')
+    }
+
+    const res = await makePost('/series/', dataToSend);
+
+    if (res.status != 201) {
+        return fail(res.status, { seriesError: true });
+    }
+    else {
+        return seriesSuccess();
+    }
+}

@@ -6,20 +6,21 @@
 	<title>Comics Finder</title>
 </svelte:head>
 
-<div class="bg-base-200 h-screen flex flex-col">
-	<div class="navbar bg-base-100">
-		<div class="flex-1">
-		  <a class="btn btn-ghost normal-case text-xl" href="/">Comics Finder</a>
-		</div>
-		<div class="flex-none gap-2">
-		  <div class="form-control">
+<div class="navbar bg-base-100">
+	<div class="navbar-start">
+		<a class="btn btn-ghost normal-case text-xl" href="/">Comics Finder</a>
+	</div>
+	<div class="navbar-center">
+		<div class="form-control">
 			<input type="text" placeholder="Search" class="input input-bordered" />
-		  </div>
-		  <div>
-			  <button class="btn btn-outline btn-secondary">Logout</button>
-		  </div>
 		</div>
-	  </div>
-
-	  <slot />
+	</div>
+	<div class="navbar-end">
+		<div class="flex flex-row gap-x-2">
+			<a class="btn btn-success" href="/add">Add</a>
+			<button class="btn btn-outline btn-secondary">Logout</button>
+		</div>
+	</div>
 </div>
+
+<slot />
