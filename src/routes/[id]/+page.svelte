@@ -3,9 +3,9 @@
 	export let data;
 </script>
 
-<div class="flex flex-row justify-center mt-3 gap-x-4">
+<div class="flex flex-row justify-center mt-6 gap-x-4">
 	<figure class="max-w-md flex flex-col justify-center">
-		<img src={data.comic.cover_url} alt="Cover img" class="rounded-xl shadow-xl" />
+		<img src={data.comic.cover_url} alt="Cover img" class="rounded-xl shadow-xl md:w-screen" />
 	</figure>
 	<div class="card bg-base-100 shadow-xl">
 		<div class="card-body">

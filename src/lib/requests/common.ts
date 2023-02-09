@@ -17,3 +17,11 @@ export const fetchData = async function(url:string) {
     const res = await fetch(API_URL + url);
     return res.json();
 }
+
+export const makeDelete = async function(url:string) {
+    const res = await fetch(API_URL + url, {
+        method: 'DELETE'
+    });
+
+    return res;
+}
