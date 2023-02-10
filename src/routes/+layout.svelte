@@ -1,5 +1,7 @@
 <script>
 	import '../app.css';
+
+	import { PlusIcon, BookIcon, LogOutIcon } from 'svelte-feather-icons'
 </script>
 
 <svelte:head>
@@ -16,10 +18,17 @@
 		</div>
 	</div>
 	<div class="navbar-end">
-		<div class="flex flex-row gap-x-2">
-			<a class="btn btn-success" href="/add">Add</a>
-			<button class="btn btn-outline btn-secondary">Logout</button>
+		<div class="flex flex-row gap-x-2 mx-6">
+			<a class="btn btn-primary" href="/add">
+				<PlusIcon />
+			</a>
+			<a class="btn btn-secondary" href="/manage">
+				<BookIcon />
+			</a>
 		</div>
+		<button class="btn btn-outline btn-primary">
+			<LogOutIcon />
+		</button>
 	</div>
 </div>
 
