@@ -1,7 +1,20 @@
 
 const API_URL = "http://localhost:8000/api"
 
-export const makePost = async function(url: string, dataToSend: unknown) {
+export const makePost = async function(url: string, dataToSend: unknown, token: string) {
+    const res = await fetch(API_URL + url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', 
+            'Authorization': 'Token ' + token
+        },
+        body: JSON.stringify(dataToSend)
+    });
+
+    return res;
+}
+
+export const makeSimplePost = async function(url: string, dataToSend: unknown) {
     const res = await fetch(API_URL + url, {
         method: 'POST',
         headers: {
@@ -13,14 +26,21 @@ export const makePost = async function(url: string, dataToSend: unknown) {
     return res;
 }
 
-export const fetchData = async function(url:string) {
-    const res = await fetch(API_URL + url);
+export const fetchData = async function(url:string, token: string) {
+    const res = await fetch(API_URL + url, {
+        headers: {
+            'Authorization': 'Token ' + token
+        }
+    });
     return res.json();
 }
 
-export const makeDelete = async function(url:string) {
+export const makeDelete = async function(url:string, token: string) {
     const res = await fetch(API_URL + url, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Token ' + token
+        }
     });
 
     return res;

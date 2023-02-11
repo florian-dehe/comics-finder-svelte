@@ -2,7 +2,7 @@
     /** @type {import('./$types').PageData} */
     export let data;
 
-    import ComicCard from '../lib/components/ComicCard.svelte'
+    import ComicCard from '$lib/components/ComicCard.svelte'
 </script>
 
 <div class="flex flex-row mt-3">

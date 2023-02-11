@@ -1,5 +1,5 @@
 <script>
-    import { PlusIcon, TrashIcon, EditIcon } from 'svelte-feather-icons'
+    import { TrashIcon, EditIcon } from 'svelte-feather-icons'
 
 	/** @type {import('./$types').PageData} */
 	export let data;

@@ -1,6 +1,6 @@
 import { fetchData } from "$lib/requests/common";
 import type { Author, Collection, Editor, Serie } from "$lib/types/Comic";
-import type { RequestEvent } from "./$types";
+import type { PageServerLoad, RequestEvent } from "./$types";
 
 import { newCollectionFormAction } from "$lib/requests/new_collection";
 import { newComicFormAction } from "$lib/requests/new_comic";
@@ -33,11 +33,11 @@ export const actions = {
 };
 
 /** @type {import('./$types').PageLoad} */
-export async function load() {
-    const editors : Editor[] = await fetchData('/editors/');
-    const collections : Collection[] = await fetchData('/collections/');
-    const series : Serie[] = await fetchData('/series/');
-    const authors: Author[] = await fetchData('/authors/');
+export const load: PageServerLoad = async ({ locals}) => {
+    const editors : Editor[] = await fetchData('/editors/', locals.token);
+    const collections : Collection[] = await fetchData('/collections/', locals.token);
+    const series : Serie[] = await fetchData('/series/', locals.token);
+    const authors: Author[] = await fetchData('/authors/', locals.token);
 
     return { editors, collections, series, authors }
 }
