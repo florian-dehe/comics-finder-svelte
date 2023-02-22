@@ -3,7 +3,7 @@ import type { ObjectOption } from "svelte-multiselect";
 import { makePost } from "./common";
 import { comicSuccess } from "./form_results";
 
-export const newComicFormAction =async function(formData: FormData) {
+export const newComicFormAction =async function(formData: FormData, token: string) {
 
     const authors = formData.get('authors');
     let authorsToSend = []
@@ -23,7 +23,7 @@ export const newComicFormAction =async function(formData: FormData) {
         'authors': authorsToSend
     }
 
-    const res = await makePost('/comics/', dataToSend);
+    const res = await makePost('/comics/', dataToSend, token);
 
     if (res.status != 201) {
         return fail(res.status, { error: true });

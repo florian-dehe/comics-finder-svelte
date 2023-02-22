@@ -10,25 +10,25 @@ import { newAuthorFormAction } from "$lib/requests/new_author";
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	add: async ({ request }: RequestEvent) => {
+	add: async ({ request, locals }: RequestEvent) => {
 		// Creates a new comic entry.
-        return await newComicFormAction(await request.formData());
+        return await newComicFormAction(await request.formData(), locals.token);
     },
-    new_editor: async ({ request }: RequestEvent) => {
+    new_editor: async ({ request, locals }: RequestEvent) => {
         // Creates a new editor entry.
-        return await newEditorFormAction(await request.formData());
+        return await newEditorFormAction(await request.formData(), locals.token);
     },
-    new_collection: async ({ request }: RequestEvent) => {
+    new_collection: async ({ request, locals }: RequestEvent) => {
         // Creates a new collection entry.
-        return await newCollectionFormAction(await request.formData());
+        return await newCollectionFormAction(await request.formData(), locals.token);
     },
-    new_series: async ({ request }: RequestEvent) => {
+    new_series: async ({ request, locals }: RequestEvent) => {
         // Creates a new series entry.
-        return await newSeriesFormAction(await request.formData());
+        return await newSeriesFormAction(await request.formData(), locals.token);
     },
-    new_author: async ({ request }: RequestEvent) => {
+    new_author: async ({ request, locals }: RequestEvent) => {
         // Creates a new author entry.
-        return await newAuthorFormAction(await request.formData());
+        return await newAuthorFormAction(await request.formData(), locals.token);
     },
 };
 

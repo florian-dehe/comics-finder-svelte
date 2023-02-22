@@ -3,13 +3,13 @@ import { makePost } from "./common";
 import { collectionSuccess } from "./form_results";
 
 
-export const newCollectionFormAction = async function (formData: FormData) {
+export const newCollectionFormAction = async function (formData: FormData, token: string) {
     const dataToSend = {
         'name': formData.get('collection_name'),
         'editor': formData.get('editor_id')
     }
 
-    const res = await makePost('/collections/', dataToSend);
+    const res = await makePost('/collections/', dataToSend, token);
     
     if (res.status != 201) {
         return fail(res.status, { collectionError: true });
