@@ -1,5 +1,6 @@
+import { PUBLIC_API_URL } from '$env/static/public';
 
-const API_URL = "http://localhost:8000/api"
+const API_URL = PUBLIC_API_URL;
 
 export const makePost = async function(url: string, dataToSend: unknown, token: string) {
     const res = await fetch(API_URL + url, {

@@ -1,11 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit'
-import type { Action, Actions, PageServerLoad } from './$types'
+import type { Action, Actions } from './$types'
+import { SECRET_SESSION_COOKIE_SECURE } from '$env/static/private'
 
 import { makeSimplePost } from '$lib/requests/common'
-
-export const load: PageServerLoad = async () => {
-  // todo
-}
 
 const login: Action = async ({ cookies, request }) => {
   const data = await request.formData();
@@ -43,7 +40,7 @@ const login: Action = async ({ cookies, request }) => {
     // https://developer.mozilla.org/en-US/docs/Glossary/CSRF
     sameSite: 'strict',
     // only sent over HTTPS in production
-    secure: process.env.NODE_ENV === 'production',
+    secure: SECRET_SESSION_COOKIE_SECURE,
     // set cookie to expire after a day
     maxAge: 60 * 60 * 24,
   })
