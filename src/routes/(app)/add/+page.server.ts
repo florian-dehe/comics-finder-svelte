@@ -1,14 +1,13 @@
 import { fetchData } from "$lib/requests/common";
 import type { Author, Collection, Editor, Serie } from "$lib/types/Comic";
-import type { PageServerLoad, RequestEvent } from "./$types";
+import type { PageServerLoad, RequestEvent, Actions } from "./$types";
 
-import { newCollectionFormAction } from "$lib/requests/new_collection";
-import { newComicFormAction } from "$lib/requests/new_comic";
-import { newEditorFormAction } from "$lib/requests/new_editor";
-import { newSeriesFormAction } from "$lib/requests/new_series";
-import { newAuthorFormAction } from "$lib/requests/new_author";
+import { newCollectionFormAction } from "$lib/requests/collection";
+import { newComicFormAction } from "$lib/requests/comic";
+import { newEditorFormAction } from "$lib/requests/editor";
+import { newSeriesFormAction } from "$lib/requests/series";
+import { newAuthorFormAction } from "$lib/requests/author";
 
-/** @type {import('./$types').Actions} */
 export const actions = {
 	add: async ({ request, locals }: RequestEvent) => {
 		// Creates a new comic entry.
@@ -30,10 +29,9 @@ export const actions = {
         // Creates a new author entry.
         return await newAuthorFormAction(await request.formData(), locals.token);
     },
-};
+} satisfies Actions;
 
-/** @type {import('./$types').PageLoad} */
-export const load: PageServerLoad = async ({ locals}) => {
+export const load: PageServerLoad = async ({ locals }) => {
     const editors : Editor[] = await fetchData('/editors/', locals.token);
     const collections : Collection[] = await fetchData('/collections/', locals.token);
     const series : Serie[] = await fetchData('/series/', locals.token);

@@ -1,24 +1,8 @@
 <script lang="ts">
 	import ManagedElement from '$lib/components/ManagedElement.svelte';
-	import { makeDelete } from '$lib/requests/common';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-    const removeEditor = async (id: number) => {
-        await makeDelete(`/editors/${id}`);
-        data.editors = data.editors.filter( el => el.id != id)
-    }
-
-    const removeCollection = async (id: number) => {
-        await makeDelete(`/collections/${id}`);
-        data.collections = data.collections.filter( el => el.id != id)
-    }
-
-    const removeSeries = async (id: number) => {
-        await makeDelete(`/series/${id}`);
-        data.series = data.series.filter( el => el.id != id)
-    }
 </script>
 
 <div class="mt-5 max-w-lg mx-auto">
@@ -35,7 +19,7 @@
 						<ManagedElement
 							elementData={editor}
 							contains={data.collections.filter((col) => col.editor_info.id == editor.id).length}
-                            removeCallback={removeEditor}
+                            formaction="?/remove_editor"
 						/>
 					{/each}
 				</div>
@@ -52,7 +36,7 @@
 						<ManagedElement 
                             elementData={collection}
                             contains={data.series.filter((series) => series.collection_info.id == collection.id).length}
-                            removeCallback={removeCollection}
+                            formaction="?/remove_collection"
                         />
 					{/each}
 				</div>
@@ -69,7 +53,24 @@
 						<ManagedElement 
                             elementData={series}
                             contains={data.comics.filter((comic) => comic.serie_info.id == series.id).length}
-                            removeCallback={removeSeries}
+                            formaction="?/remove_series"
+                        />
+					{/each}
+				</div>
+			</div>
+		</div>
+		
+		<!-- Authors -->
+		<div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+			<input type="checkbox" />
+			<div class="collapse-title text-xl font-bold">Authors</div>
+			<div class="collapse-content px-2">
+				<div class="flex flex-col gap-y-1">
+					{#each data.authors as author}
+						<ManagedElement 
+                            elementData={author}
+                            contains={data.comics.filter((comic) => comic.authors_info.includes(author)).length}
+                            formaction="?/remove_author"
                         />
 					{/each}
 				</div>

@@ -1,5 +1,5 @@
 import { fail } from "@sveltejs/kit";
-import { makePost } from "./common";
+import { makePost, makeDelete } from "./common";
 import { collectionSuccess } from "./form_results";
 
 
@@ -18,3 +18,14 @@ export const newCollectionFormAction = async function (formData: FormData, token
         return collectionSuccess();
     }
 };
+
+export const removeCollectionFormAction = async (formData: FormData, token: string) => {
+    const res = await makeDelete(`/collections/${formData.get('id')}/`, token);
+
+    if (res.status != 204) {
+        return fail(res.status, { collectionError: true })
+    }
+    else {
+        return collectionSuccess();
+    }
+}
