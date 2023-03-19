@@ -19,7 +19,7 @@
 						<ManagedElement
 							elementData={editor}
 							contains={data.collections.filter((col) => col.editor_info.id == editor.id).length}
-                            formaction="?/remove_editor"
+							formaction="?/remove_editor"
 						/>
 					{/each}
 				</div>
@@ -33,11 +33,12 @@
 			<div class="collapse-content px-2">
 				<div class="flex flex-col gap-y-1">
 					{#each data.collections as collection}
-						<ManagedElement 
-                            elementData={collection}
-                            contains={data.series.filter((series) => series.collection_info.id == collection.id).length}
-                            formaction="?/remove_collection"
-                        />
+						<ManagedElement
+							elementData={collection}
+							contains={data.series.filter((series) => series.collection_info.id == collection.id)
+								.length}
+							formaction="?/remove_collection"
+						/>
 					{/each}
 				</div>
 			</div>
@@ -50,16 +51,16 @@
 			<div class="collapse-content px-2">
 				<div class="flex flex-col gap-y-1">
 					{#each data.series as series}
-						<ManagedElement 
-                            elementData={series}
-                            contains={data.comics.filter((comic) => comic.serie_info.id == series.id).length}
-                            formaction="?/remove_series"
-                        />
+						<ManagedElement
+							elementData={series}
+							contains={data.comics.filter((comic) => comic.serie_info.id == series.id).length}
+							formaction="?/remove_series"
+						/>
 					{/each}
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Authors -->
 		<div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
 			<input type="checkbox" />
@@ -67,11 +68,11 @@
 			<div class="collapse-content px-2">
 				<div class="flex flex-col gap-y-1">
 					{#each data.authors as author}
-						<ManagedElement 
-                            elementData={author}
-                            contains={data.comics.filter((comic) => comic.authors_info.includes(author)).length}
-                            formaction="?/remove_author"
-                        />
+						<ManagedElement
+							elementData={author}
+							contains={data.comics.filter((comic) => comic.authors_info.includes(author)).length}
+							formaction="?/remove_author"
+						/>
 					{/each}
 				</div>
 			</div>

@@ -1,9 +1,9 @@
 <script>
-    import '../app.css';
+	import '../app.css';
 </script>
 
 <svelte:head>
 	<title>Comics Finder</title>
 </svelte:head>
 
-<slot></slot>
+<slot />

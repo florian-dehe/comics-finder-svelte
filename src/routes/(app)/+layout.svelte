@@ -1,5 +1,5 @@
 <script>
-	import { PlusIcon, BookIcon, LogOutIcon } from 'svelte-feather-icons'
+	import { PlusIcon, BookIcon, LogOutIcon } from 'svelte-feather-icons';
 </script>
 
 <div class="navbar bg-base-100">

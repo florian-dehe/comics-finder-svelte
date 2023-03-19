@@ -13,10 +13,10 @@
 	export let form: ActionData;
 	export let data: PageData;
 
-	let editor_id: number = -1;
-	let collection_id: number = -1;
-	let series_id: number = -1;
-	let authors_id: any[] = []
+	let editor_id = -1;
+	let collection_id = -1;
+	let series_id = -1;
+	let authors_id: number[] = [];
 
 	const collectionsForCurrentEditor = (id_editor: number) =>
 		data.collections.filter((col) => col.editor == id_editor);
@@ -28,25 +28,25 @@
 	<form method="post" action="?/add">
 		{#if form?.success}
 			<AlertSuccess msg="Your comic has been successfully added !" />
-		{:else if form?.editorSuccess }
+		{:else if form?.editorSuccess}
 			<AlertSuccess msg="Your editor has been successfully added !" />
-		{:else if form?.collectionSucess }
+		{:else if form?.collectionSucess}
 			<AlertSuccess msg="Your collection has been successfully added !" />
-		{:else if form?.seriesSuccess }
+		{:else if form?.seriesSuccess}
 			<AlertSuccess msg="Your series has been successfully added !" />
-		{:else if form?.authorSuccess }
+		{:else if form?.authorSuccess}
 			<AlertSuccess msg="Your author has been successfully added !" />
 		{/if}
 
-		{#if form?.error }
+		{#if form?.error}
 			<AlertError msg="We could'nt add your comic !" />
-		{:else if form?.editorError }
+		{:else if form?.editorError}
 			<AlertError msg="We could'nt add your editor !" />
-		{:else if form?.collectionError }
+		{:else if form?.collectionError}
 			<AlertError msg="We could'nt add your collection !" />
-		{:else if form?.seriesError }
+		{:else if form?.seriesError}
 			<AlertError msg="We could'nt add your series !" />
-		*{:else if form?.authorError }
+			*{:else if form?.authorError}
 			<AlertError msg="We could'nt add your author !" />
 		{/if}
 
@@ -159,7 +159,12 @@
 					<label class="label" for="id_cover_url">
 						<span class="label-text font-bold text-lg">Cover url</span>
 					</label>
-					<input type="text" id="id_cover_url" name="cover_url" class="input input-bordered w-full" />
+					<input
+						type="text"
+						id="id_cover_url"
+						name="cover_url"
+						class="input input-bordered w-full"
+					/>
 				</div>
 
 				<!-- Authors -->
@@ -180,7 +185,6 @@
 				<div class="flex justify-end">
 					<input type="submit" value="Add" class="btn btn-success my-3" />
 				</div>
-				
 			</div>
 		</div>
 	</form>
