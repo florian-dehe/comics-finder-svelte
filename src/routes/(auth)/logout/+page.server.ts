@@ -1,4 +1,3 @@
-import { makeSimplePost } from '$lib/requests/common'
 import { redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
@@ -10,12 +9,9 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
   async default({ cookies }) {
-    // log out from api
-    const res = await makeSimplePost("/auth/logout/", {});
-    console.log(res.statusText);
-
+    
     // eat the cookie
-    cookies.set('session', '', {
+    cookies.set('authToken', '', {
       path: '/',
       expires: new Date(0),
     })

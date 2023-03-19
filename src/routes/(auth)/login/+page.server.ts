@@ -31,7 +31,7 @@ const login: Action = async ({ cookies, request }) => {
 
   const resData = await res.json();
 
-  cookies.set('session', resData.key, {
+  cookies.set('authToken', resData.token, {
     // send cookie for every page
     path: '/',
     // server side only cookie so you can't use `document.cookie`
