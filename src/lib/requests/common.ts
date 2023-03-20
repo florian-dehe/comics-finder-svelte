@@ -1,9 +1,6 @@
-import { PUBLIC_API_URL } from '$env/static/public';
-
-const API_URL = PUBLIC_API_URL;
 
 export const makePost = async function (url: string, dataToSend: unknown, token: string) {
-	const res = await fetch(API_URL + url, {
+	const res = await fetch(process.env.PI_URL + url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -16,7 +13,7 @@ export const makePost = async function (url: string, dataToSend: unknown, token:
 };
 
 export const makeSimplePost = async function (url: string, dataToSend: unknown) {
-	const res = await fetch(API_URL + url, {
+	const res = await fetch(process.env.API_URL + url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -28,7 +25,7 @@ export const makeSimplePost = async function (url: string, dataToSend: unknown) 
 };
 
 export const fetchData = async function (url: string, token: string) {
-	const res = await fetch(API_URL + url, {
+	const res = await fetch(process.env.API_URL + url, {
 		headers: {
 			Authorization: 'Token ' + token
 		}
@@ -37,7 +34,7 @@ export const fetchData = async function (url: string, token: string) {
 };
 
 export const makeDelete = async function (url: string, token: string) {
-	const res = await fetch(API_URL + url, {
+	const res = await fetch(process.env.API_URL + url, {
 		method: 'DELETE',
 		headers: {
 			Authorization: 'Token ' + token
