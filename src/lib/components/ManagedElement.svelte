@@ -7,14 +7,10 @@
 </script>
 
 <div class="alert bg-base-100 border-2 border-base-300 p-2">
-	<div>
-		<div>
-			<h3 class="font-semibold">
-				{elementData.name} <span class="font-medium"> ({contains} elements)</span>
-			</h3>
-		</div>
-	</div>
-	<div class="flex-none">
+	<div class="flex flex-row justify-between w-full">
+        <h3 class="font-semibold">
+			{elementData.name} <span class="font-medium"> ({contains} elements)</span>
+		</h3>
 		<form action={formaction} method="post">
 			<input type="hidden" name="id" value={elementData.id} />
 			<button type="submit" class="btn btn-sm btn-outline btn-error">
