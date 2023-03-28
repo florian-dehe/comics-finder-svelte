@@ -1,4 +1,3 @@
-
 export const makePost = async function (url: string, dataToSend: unknown, token: string) {
 	const res = await fetch(process.env.API_URL + url, {
 		method: 'POST',

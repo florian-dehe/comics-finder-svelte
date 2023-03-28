@@ -24,7 +24,7 @@
 		data.series.filter((series) => series.collection == id_collection);
 </script>
 
-<div class="py-7">
+<div class="p-7 lg:container lg:mx-auto">
 	<form method="post" action="?/add">
 		{#if form?.success}
 			<AlertSuccess msg="Your comic has been successfully added !" />
@@ -50,8 +50,8 @@
 			<AlertError msg="We could'nt add your author !" />
 		{/if}
 
-		<div class="flex flex-row gap-x-4 justify-center">
-			<div class="w-1/3">
+		<div class="lg:flex flex-row gap-x-6 justify-center">
+			<div class="container">
 				<!-- Title -->
 				<div class="form-control w-full">
 					<label class="label" for="id_title">
@@ -113,10 +113,12 @@
 					<label class="label" for="id_description">
 						<span class="label-text font-bold text-lg">Description</span>
 					</label>
-					<textarea class="textarea textarea-bordered" id="id_description" name="description" />
+					<textarea class="textarea textarea-bordered" id="id_description" name="description" rows="4" />
 				</div>
 			</div>
-			<div class="w-1/3">
+
+            <!-- Second column --->
+			<div class="container">
 				<!-- Volume -->
 				<div class="form-control w-full">
 					<label class="label" for="id_volume">
@@ -181,11 +183,10 @@
 						modalId="author_modal"
 					/>
 				</div>
-
-				<div class="flex justify-end">
-					<input type="submit" value="Add" class="btn btn-success my-3" />
-				</div>
-			</div>
+			</div>    
+		</div>
+        <div class="flex justify-center m-3">
+			<input type="submit" value="Add new comic" class="btn btn-success my-3" />
 		</div>
 	</form>
 </div>
