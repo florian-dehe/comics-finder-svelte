@@ -20,13 +20,13 @@
 
 <div class="flex flex-row gap-x-2 w-full">
 	{#if isDisabled}
-		<select {id} {name} class="select select-bordered w-10/12" disabled>
+		<select {id} {name} class="select select-bordered flex-auto" disabled>
 			<option disabled selected>{placeholder}</option>
 		</select>
 		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a class="btn btn-disabled" href="#">New</a>
 	{:else}
-		<select {id} {name} class="select select-bordered w-10/12" bind:value>
+		<select {id} {name} class="select select-bordered flex-auto" bind:value>
 			<option value={-1} disabled selected>{placeholder}</option>
 			{#each options as opt}
 				<option value={opt.id}>{opt.name}</option>

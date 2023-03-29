@@ -1,18 +1,28 @@
-<script>
+<script lang="ts">
 	import { TrashIcon, EditIcon } from 'svelte-feather-icons';
+    import type { PageData } from './$types';
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	export let data: PageData;
 </script>
 
-<div class="container mt-6 mx-auto px-40">
-	<div class="flex flex-row justify-center gap-x-4">
-		<figure class="max-w-md flex flex-col justify-center">
-			<img src={data.comic.cover_url} alt="Cover img" class="rounded-xl shadow-xl md:w-screen" />
+<div class="container p-6 mx-auto w-10/12 xl:w-2/3">
+	<div class="flex flex-col lg:flex-row lg:justify-center gap-4">
+		<figure class="lg:w-5/12 w-5/6 mx-auto">
+			<img src={data.comic.cover_url} alt="Cover img" class="rounded-xl shadow-xl lg:mx-0 w-full" />
 		</figure>
-		<div class="card bg-base-100 shadow-xl">
+		<div class="card bg-base-100 shadow-xl flex-auto">
 			<div class="card-body">
-				<h2 class="text-3xl font-semibold">{data.comic.title}</h2>
+                <div class="flex flex-row justify-between">
+			        <h2 class="text-3xl font-semibold">{data.comic.title}</h2>
+                    <div class="gap-x-3">
+                        <button class="btn btn-outline btn-secondary btn-square btn-sm">
+                            <EditIcon />
+                        </button>
+                        <button class="btn btn-outline btn-error btn-square btn-sm">
+                            <TrashIcon />
+                        </button>
+                    </div>
+                </div>
 				<div class="leading-4">
 					<h3 class="text-lg">
 						<span class="font-bold">Series:</span>
@@ -55,17 +65,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-
-	<div class="flex flex-row justify-end mx-auto my-3">
-		<div class="flex flex-row gap-x-2 mx-1">
-			<a class="btn btn-outline btn-secondary" href="#update">
-				<EditIcon />
-			</a>
-			<a class="btn btn-outline btn-error" href="#delete">
-				<TrashIcon />
-			</a>
 		</div>
 	</div>
 </div>

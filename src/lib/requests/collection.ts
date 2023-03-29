@@ -1,6 +1,5 @@
 import { fail } from '@sveltejs/kit';
 import { makePost, makeDelete } from './common';
-import { collectionSuccess } from './form_results';
 
 export const newCollectionFormAction = async function (formData: FormData, token: string) {
 	const dataToSend = {
@@ -13,7 +12,7 @@ export const newCollectionFormAction = async function (formData: FormData, token
 	if (res.status != 201) {
 		return fail(res.status, { collectionError: true });
 	} else {
-		return collectionSuccess();
+		return { collectionSuccess: true };
 	}
 };
 
@@ -23,6 +22,6 @@ export const removeCollectionFormAction = async (formData: FormData, token: stri
 	if (res.status != 204) {
 		return fail(res.status, { collectionError: true });
 	} else {
-		return collectionSuccess();
+		return { collectionSuccess: true };
 	}
 };

@@ -1,6 +1,5 @@
 import { fail } from '@sveltejs/kit';
 import { makePost, makeDelete } from './common';
-import { seriesSuccess } from './form_results';
 
 export const newSeriesFormAction = async function (formData: FormData, token: string) {
 	const dataToSend = {
@@ -13,7 +12,7 @@ export const newSeriesFormAction = async function (formData: FormData, token: st
 	if (res.status != 201) {
 		return fail(res.status, { seriesError: true });
 	} else {
-		return seriesSuccess();
+		return { seriesSuccess: true };
 	}
 };
 
@@ -23,6 +22,6 @@ export const removeSeriesFormAction = async (formData: FormData, token: string) 
 	if (res.status != 204) {
 		return fail(res.status, { seriesError: true });
 	} else {
-		return seriesSuccess();
+		return { seriesSuccess: true };
 	}
 };

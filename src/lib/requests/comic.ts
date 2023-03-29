@@ -1,7 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import type { ObjectOption } from 'svelte-multiselect';
 import { makePost } from './common';
-import { comicSuccess } from './form_results';
 
 export const newComicFormAction = async function (formData: FormData, token: string) {
 	const authors = formData.get('authors');
@@ -27,6 +26,6 @@ export const newComicFormAction = async function (formData: FormData, token: str
 	if (res.status != 201) {
 		return fail(res.status, { error: true });
 	} else {
-		return comicSuccess();
+		return { comicSuccess: true };
 	}
 };

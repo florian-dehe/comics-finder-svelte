@@ -16,6 +16,8 @@
 </script>
 
 <div class="flex flex-row gap-x-2 w-full">
-	<MultiSelect {id} {name} bind:selected={values} options={optionsToSelect} {placeholder} />
+    <div class="flex-auto">
+	    <MultiSelect {id} {name} bind:selected={values} options={optionsToSelect} {placeholder} outerDivClass="h-full" />
+    </div>
 	<a class="btn btn-success" href="#{modalId}">New</a>
 </div>
