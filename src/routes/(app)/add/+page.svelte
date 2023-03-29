@@ -24,7 +24,7 @@
 		data.series.filter((series) => series.collection == id_collection);
 </script>
 
-<div class="p-7 lg:container lg:mx-auto">
+<div class="p-7 w-5/6 mx-auto">
 	<form method="post" action="?/add">
 		{#if form?.success}
 			<AlertSuccess msg="Your comic has been successfully added !" />
