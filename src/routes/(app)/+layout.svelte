@@ -12,15 +12,15 @@
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 				<li>
-                    <a href="/add">
-                        <PlusIcon /> Add a comic
-                    </a>
-                </li>
+					<a href="/add">
+						<PlusIcon /> Add a comic
+					</a>
+				</li>
 				<li>
-                    <a href="/manage">
-                       <BookIcon /> Manage library
-                    </a>
-                </li>
+					<a href="/manage">
+						<BookIcon /> Manage library
+					</a>
+				</li>
 			</ul>
 		</div>
 		<div class="hidden lg:block">

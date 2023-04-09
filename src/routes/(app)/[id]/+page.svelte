@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { TrashIcon, EditIcon } from 'svelte-feather-icons';
-    import type { PageData } from './$types';
+	import type { PageData } from './$types';
+	import DeleteComicsModal from '$lib/components/modals/DeleteComicsModal.svelte';
 
 	export let data: PageData;
 </script>
@@ -12,17 +13,17 @@
 		</figure>
 		<div class="card bg-base-100 shadow-xl flex-auto">
 			<div class="card-body">
-                <div class="flex flex-row justify-between">
-			        <h2 class="text-3xl font-semibold">{data.comic.title}</h2>
-                    <div class="gap-x-3">
-                        <button class="btn btn-outline btn-secondary btn-square btn-sm">
-                            <EditIcon />
-                        </button>
-                        <button class="btn btn-outline btn-error btn-square btn-sm">
-                            <TrashIcon />
-                        </button>
-                    </div>
-                </div>
+				<div class="flex flex-row justify-between">
+					<h2 class="text-3xl font-semibold">{data.comic.title}</h2>
+					<div class="gap-x-3">
+						<button class="btn btn-outline btn-secondary btn-square btn-sm">
+							<EditIcon />
+						</button>
+						<a class="btn btn-outline btn-error btn-square btn-sm" href="#delete_modal">
+							<TrashIcon />
+						</a>
+					</div>
+				</div>
 				<div class="leading-4">
 					<h3 class="text-lg">
 						<span class="font-bold">Series:</span>
@@ -68,3 +69,5 @@
 		</div>
 	</div>
 </div>
+
+<DeleteComicsModal modalId="delete_modal" comicId={data.comic.id} />

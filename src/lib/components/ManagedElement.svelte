@@ -8,7 +8,7 @@
 
 <div class="alert bg-base-100 border-2 border-base-300 p-2">
 	<div class="flex flex-row justify-between w-full">
-        <h3 class="font-semibold">
+		<h3 class="font-semibold">
 			{elementData.name} <span class="font-medium"> ({contains} elements)</span>
 		</h3>
 		<form action={formaction} method="post">

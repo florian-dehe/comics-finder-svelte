@@ -46,7 +46,7 @@
 			<AlertError msg="We could'nt add your collection !" />
 		{:else if form?.seriesError}
 			<AlertError msg="We could'nt add your series !" />
-			*{:else if form?.authorError}
+		{:else if form?.authorError}
 			<AlertError msg="We could'nt add your author !" />
 		{/if}
 
@@ -113,11 +113,16 @@
 					<label class="label" for="id_description">
 						<span class="label-text font-bold text-lg">Description</span>
 					</label>
-					<textarea class="textarea textarea-bordered" id="id_description" name="description" rows="4" />
+					<textarea
+						class="textarea textarea-bordered"
+						id="id_description"
+						name="description"
+						rows="4"
+					/>
 				</div>
 			</div>
 
-            <!-- Second column --->
+			<!-- Second column --->
 			<div class="container">
 				<!-- Volume -->
 				<div class="form-control w-full">
@@ -183,9 +188,9 @@
 						modalId="author_modal"
 					/>
 				</div>
-			</div>    
+			</div>
 		</div>
-        <div class="flex justify-center m-3">
+		<div class="flex justify-center m-3">
 			<input type="submit" value="Add new comic" class="btn btn-success my-3" />
 		</div>
 	</form>
