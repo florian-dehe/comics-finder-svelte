@@ -26,7 +26,7 @@ export const newComicFormAction = async function (formData: FormData, token: str
 	if (res.status != 201) {
 		return fail(res.status, { error: true });
 	} else {
-		return redirect(302, '/');
+		throw redirect(302, '/');
 	}
 };
 

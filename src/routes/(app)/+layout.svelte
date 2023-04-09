@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PlusIcon, BookIcon, LogOutIcon, MenuIcon } from 'svelte-feather-icons';
+	import { PlusIcon, BookIcon, LogOutIcon, MenuIcon, SearchIcon } from 'svelte-feather-icons';
 </script>
 
 <div class="navbar bg-base-100">
@@ -28,9 +28,15 @@
 		</div>
 	</div>
 	<div class="navbar-center">
-		<div class="form-control hidden lg:block">
-			<input type="text" placeholder="Search" class="input input-bordered" />
-		</div>
+        <div class="lg:flex flex-row gap-1 hidden">
+            <div class="form-control">
+			    <input type="text" placeholder="Search" class="input input-bordered" />
+		    </div>
+            <button class="btn btn-ghost">
+				<SearchIcon />
+			</button>
+        </div>
+		
 		<a class="btn btn-ghost normal-case text-xl lg:hidden" href="/">Comics Finder</a>
 	</div>
 	<div class="navbar-end">
