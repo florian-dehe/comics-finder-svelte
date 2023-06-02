@@ -18,10 +18,11 @@
 	let series_id = -1;
 	let authors_id: number[] = [];
 
+	//TODO: This should be handled with API routes hitting the database
 	const collectionsForCurrentEditor = (id_editor: number) =>
-		data.collections.filter((col) => col.editor == id_editor);
+		data.collections.filter((col) => col.editorId == id_editor);
 	const seriesForCurrentCollection = (id_collection: number) =>
-		data.series.filter((series) => series.collection == id_collection);
+		data.series.filter((series) => series.collectionId == id_collection);
 </script>
 
 <div class="p-7 w-5/6 mx-auto">

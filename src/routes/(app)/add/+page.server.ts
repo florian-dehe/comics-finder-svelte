@@ -1,5 +1,4 @@
-import { fetchData } from '$lib/requests/common';
-import type { Author, Collection, Editor, Serie } from '$lib/types/Comic';
+import type { Author, Collection, Editor, Series } from '@prisma/client';
 import type { PageServerLoad, RequestEvent, Actions } from './$types';
 
 import { newCollectionFormAction } from '$lib/requests/collection';
@@ -7,6 +6,7 @@ import { newComicFormAction } from '$lib/requests/comic';
 import { newEditorFormAction } from '$lib/requests/editor';
 import { newSeriesFormAction } from '$lib/requests/series';
 import { newAuthorFormAction } from '$lib/requests/author';
+import prisma from '$lib/prisma';
 
 export const actions = {
 	add: async ({ request, locals }: RequestEvent) => {
@@ -31,11 +31,11 @@ export const actions = {
 	}
 } satisfies Actions;
 
-export const load: PageServerLoad = async ({ locals }) => {
-	const editors: Editor[] = await fetchData('/editors/', locals.token);
-	const collections: Collection[] = await fetchData('/collections/', locals.token);
-	const series: Serie[] = await fetchData('/series/', locals.token);
-	const authors: Author[] = await fetchData('/authors/', locals.token);
+export const load: PageServerLoad = async () => {
+	const editors: Editor[] = await prisma.editor.findMany();
+	const collections: Collection[] = await prisma.collection.findMany();
+	const series: Series[] = await prisma.series.findMany();
+	const authors: Author[] = await prisma.series.findMany();
 
 	return { editors, collections, series, authors };
 };

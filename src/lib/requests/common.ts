@@ -23,15 +23,6 @@ export const makeSimplePost = async function (url: string, dataToSend: unknown) 
 	return res;
 };
 
-export const fetchData = async function (url: string, token: string) {
-	const res = await fetch(process.env.API_URL + url, {
-		headers: {
-			Authorization: 'Token ' + token
-		}
-	});
-	return res.json();
-};
-
 export const makeDelete = async function (url: string, token: string) {
 	const res = await fetch(process.env.API_URL + url, {
 		method: 'DELETE',

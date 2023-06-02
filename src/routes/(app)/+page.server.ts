@@ -1,7 +1,9 @@
-import { fetchData } from '$lib/requests/common';
+import prisma from '$lib/prisma';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ locals }) => {
-	const comics = await fetchData(`/comics/`, locals.token);
+export const load: PageServerLoad = async () => {
+	const comics = await prisma.comic.findMany({
+		include: { series: true, authors: true }
+	});
 	return { comics };
 };

@@ -1,11 +1,11 @@
-import { fetchData } from '$lib/requests/common';
-import type { Collection, Comic, Editor, Serie, Author } from '$lib/types/Comic';
+import type { Collection, Comic, Editor, Series, Author } from '@prisma/client';
 import type { PageServerLoad, Actions, RequestEvent } from './$types';
 
 import { removeEditorFormAction } from '$lib/requests/editor';
 import { removeSeriesFormAction } from '$lib/requests/series';
 import { removeCollectionFormAction } from '$lib/requests/collection';
 import { removeAuthorFormAction } from '$lib/requests/author';
+import prisma from '$lib/prisma';
 
 export const actions = {
 	remove_editor: async ({ request, locals }: RequestEvent) => {
@@ -26,12 +26,13 @@ export const actions = {
 	}
 } satisfies Actions;
 
-export const load: PageServerLoad = async ({ locals }) => {
-	const editors: Editor[] = await fetchData('/editors/', locals.token);
-	const collections: Collection[] = await fetchData('/collections/', locals.token);
-	const series: Serie[] = await fetchData('/series/', locals.token);
-	const authors: Author[] = await fetchData('/authors/', locals.token);
-	const comics: Comic[] = await fetchData('/comics/', locals.token);
+export const load: PageServerLoad = async () => {
+	const editors: Editor[] = await prisma.editor.findMany();
+	const collections: Collection[] = await prisma.collection.findMany();
+	const series: Series[] = await prisma.series.findMany();
+	const authors: Author[] = await prisma.author.findMany({ include: { Comic: true } });
+	const comics: Comic[] = await prisma.comic.findMany();
 
+	console.log(authors);
 	return { editors, collections, series, authors, comics };
 };
