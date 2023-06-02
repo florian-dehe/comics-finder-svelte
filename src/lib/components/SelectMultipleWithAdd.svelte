@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Author } from '$lib/types/Comic';
+	import type { Author } from '@prisma/client';
 	import MultiSelect from 'svelte-multiselect';
 
 	export let options: Author[];

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Comic } from '@prisma/client';
+	import type { Comic, Series } from '@prisma/client';
 
-	export let data: Comic;
+	export let data: Comic & { series: Series };
 </script>
 
 <a class="card card-compact w-64 md:w-56 bg-base-100 shadow-xl mx-auto xl:mx-0" href="/{data.isbn}">

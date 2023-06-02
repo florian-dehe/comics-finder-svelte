@@ -31,7 +31,7 @@
 			<AlertSuccess msg="Your comic has been successfully added !" />
 		{:else if form?.editorSuccess}
 			<AlertSuccess msg="Your editor has been successfully added !" />
-		{:else if form?.collectionSucess}
+		{:else if form?.collectionSuccess}
 			<AlertSuccess msg="Your collection has been successfully added !" />
 		{:else if form?.seriesSuccess}
 			<AlertSuccess msg="Your series has been successfully added !" />

@@ -66,7 +66,7 @@
 			<div class="collapse-title text-xl font-bold">Authors</div>
 			<div class="collapse-content px-2">
 				<div class="flex flex-col gap-y-1">
-					{#each data.authors as author}
+					{#each data.authors as author }
 						<ManagedElement
 							elementData={author}
 							contains={author.Comic.length}

@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { ObjectOption } from 'svelte-multiselect';
-import { makePost, makeDelete } from './common';
+import { makePost } from './common';
 
 export const newComicFormAction = async function (formData: FormData, token: string) {
 	const authors = formData.get('authors');
@@ -30,12 +30,3 @@ export const newComicFormAction = async function (formData: FormData, token: str
 	}
 };
 
-export const removeComicFormAction = async (formData: FormData, token: string) => {
-	const res = await makeDelete(`/comics/${formData.get('id')}/`, token);
-
-	if (res.status != 204) {
-		return fail(res.status, { error: true });
-	} else {
-		throw redirect(302, '/');
-	}
-};

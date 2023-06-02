@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Collection, Editor, Serie } from '$lib/types/Comic';
+	import type { Collection, Editor, Series } from '@prisma/client';
 
-	export let options: Editor[] | Collection[] | Serie[];
+	export let options: Editor[] | Collection[] | Series[];
 	export let parent_id: number;
 	export let value: number;
 
