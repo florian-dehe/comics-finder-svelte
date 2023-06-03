@@ -1,6 +1,6 @@
 import { PUBLIC_FIREBASE_API_KEY, PUBLIC_FIREBASE_APP_ID, PUBLIC_FIREBASE_AUTH_DOMAIN, PUBLIC_FIREBASE_MESSAGING_SENDER_ID, PUBLIC_FIREBASE_PROJECT_ID, PUBLIC_FIREBASE_STORAGE_BUCKET } from '$env/static/public';
 import { initializeApp, getApps } from 'firebase/app';
-import { getAuth, setPersistence, browserSessionPersistence } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: PUBLIC_FIREBASE_API_KEY,
@@ -19,7 +19,6 @@ if (!getApps().length) {
 
 // Auth
 const firebaseAuth = getAuth(firebaseApp);
-await setPersistence(firebaseAuth, browserSessionPersistence)
 
 export { firebaseApp, firebaseAuth };
 
