@@ -48,11 +48,9 @@
 				<BookIcon />
 			</a>
 		</div>
-		<form action="/logout" method="post">
-			<button type="submit" class="btn btn-outline btn-primary">
-				<LogOutIcon />
-			</button>
-		</form>
+        <a type="button" class="btn btn-outline btn-primary" href="/logout">
+            <LogOutIcon />
+        </a>
 	</div>
 </div>
 
