@@ -48,9 +48,9 @@
 				<BookIcon />
 			</a>
 		</div>
-        <a type="button" class="btn btn-outline btn-primary" href="/logout">
-            <LogOutIcon />
-        </a>
+		<a type="button" class="btn btn-outline btn-primary" href="/logout">
+			<LogOutIcon />
+		</a>
 	</div>
 </div>
 

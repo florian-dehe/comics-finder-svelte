@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -44,11 +44,11 @@ model Series {
 model Comic {
   isbn        BigInt   @id @unique
   title       String
-  description String
+  description String   @db.Text
   volume      Int
   releaseDate DateTime
   pages       Int
-  coverUrl    String @default("")
+  coverUrl    String   @default("")
 
   updatedAt DateTime @updatedAt
 
