@@ -60,7 +60,7 @@
 				<div class="my-3">
 					<h3 class="text-lg font-bold">Authors</h3>
 					<div class="flex flex-row my-1 gap-x-1">
-						{#each data.comic?.authors as author}
+						{#each data.authors as author}
 							<div class="badge badge-primary">{author.name}</div>
 						{/each}
 					</div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let modalId: string;
-	export let comicId: number;
+	export let comicId: bigint | undefined;
 </script>
 
 <div class="modal" id={modalId}>

@@ -1,18 +1,37 @@
+import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
-import { makePost } from './common';
 
-export const newSeriesFormAction = async function (formData: FormData, token: string) {
-	const dataToSend = {
-		name: formData.get('series_name'),
-		collection: formData.get('collection_id')
-	};
+export const newSeriesFormAction = async (formData: FormData) => {
+	const seriesName = formData.get('series_name');
+	const collectionId = formData.get('collection_id');
 
-	const res = await makePost('/series/', dataToSend, token);
-
-	if (res.status != 201) {
-		return fail(res.status, { seriesError: true });
-	} else {
-		return { seriesSuccess: true };
+	if (!seriesName || !collectionId || typeof seriesName != 'string') {
+		return fail(400, { seriesError: true });
 	}
+
+	await prisma.series.create({
+		data: {
+			name: String(seriesName),
+			collection: {
+				connect: {
+					id: Number(collectionId)
+				}
+			}
+		}
+	});
+
+	return { seriesSuccess: true };
 };
 
+export const removeSeriesFormAction = async (formData: FormData) => {
+	const seriesId = formData.get('id');
+	if (!seriesId) {
+		return fail(400, { seriesError: true });
+	}
+
+	await prisma.series.delete({
+		where: { id: Number(seriesId) }
+	});
+
+	return { seriesSuccess: true };
+};

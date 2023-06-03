@@ -1,32 +1,54 @@
-import { fail, redirect } from '@sveltejs/kit';
+import prisma from '$lib/prisma';
+import { fail } from '@sveltejs/kit';
 import type { ObjectOption } from 'svelte-multiselect';
-import { makePost } from './common';
 
-export const newComicFormAction = async function (formData: FormData, token: string) {
+export const newComicFormAction = async function (formData: FormData) {
+	const comicIsbn = formData.get('isbn');
+	const comicTitle = formData.get('title');
+	const comicDescription = formData.get('description');
+	const comicVolume = formData.get('volume');
+	const comicReleaseDate = formData.get('release_date');
+	const comicPages = formData.get('pages');
+	const comicCoverUrl = formData.get('cover_url');
+
+	const seriesId = formData.get('series');
 	const authors = formData.get('authors');
-	let authorsToSend = [];
-	if (authors != null) {
-		authorsToSend = JSON.parse(authors).map((opt: ObjectOption) => opt.value);
+
+	if (
+		!comicIsbn ||
+		!comicTitle ||
+		!comicDescription ||
+		!comicVolume ||
+		!comicReleaseDate ||
+		!comicPages ||
+		!comicCoverUrl ||
+		!seriesId ||
+		!authors
+	) {
+		return fail(400, { error: true });
 	}
 
-	const dataToSend = {
-		title: formData.get('title'),
-		serie: formData.get('series'),
-		description: formData.get('description'),
-		volume: formData.get('volume'),
-		release_date: formData.get('release_date'),
-		pages: formData.get('pages'),
-		isbn: formData.get('isbn'),
-		cover_url: formData.get('cover_url'),
-		authors: authorsToSend
-	};
+	const authorsToConnect = JSON.parse(String(authors)).map((opt: ObjectOption) => opt.value);
 
-	const res = await makePost('/comics/', dataToSend, token);
+	await prisma.comic.create({
+		data: {
+			isbn: Number(comicIsbn),
+			title: String(comicTitle),
+			description: String(comicDescription),
+			volume: Number(comicVolume),
+			releaseDate: new Date(String(comicReleaseDate)),
+			pages: Number(comicPages),
+			coverUrl: String(comicCoverUrl),
+			series: {
+				connect: {
+					id: Number(seriesId)
+				}
+			},
+			authors: {
+				connect: authorsToConnect
+			}
+		}
+	});
 
-	if (res.status != 201) {
-		return fail(res.status, { error: true });
-	} else {
-		throw redirect(302, '/');
-	}
+	return { success: true };
 };
-

@@ -1,17 +1,29 @@
+import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
-import { makePost } from './common';
 
-export const newAuthorFormAction = async function (formData: FormData, token: string) {
-	const dataToSend = {
-		name: formData.get('author_name')
-	};
+export const newAuthorFormAction = async (formData: FormData) => {
+	const authorName = formData.get('author_name');
 
-	const res = await makePost('/authors/', dataToSend, token);
-
-	if (res.status != 201) {
-		return fail(res.status, { authorError: true });
-	} else {
-		return { authorSuccess: true };
+	if (!authorName || typeof authorName != 'string') {
+		return fail(400, { authorError: true });
 	}
+
+	await prisma.author.create({
+		data: {
+			name: authorName
+		}
+	});
+
+	return { authorSuccess: true };
 };
 
+export const removeAuthorFormAction = async (formData: FormData) => {
+	const authorId = formData.get('id');
+	if (!authorId) {
+		return fail(400, { authorError: true });
+	}
+
+	await prisma.author.delete({ where: { id: Number(authorId) } });
+
+	return { authorSuccess: true };
+};
