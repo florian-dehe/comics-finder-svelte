@@ -6,7 +6,7 @@
 
 <a class="card card-compact w-64 md:w-56 bg-base-100 shadow-xl mx-auto xl:mx-0" href="/{data.isbn}">
 	<figure class="w-64 md:w-56 h-96 md:h-80">
-		<img src="https://placehold.co/200x400" alt="Cover" />
+		<img src={data.coverUrl} alt="Cover" />
 	</figure>
 	<div class="card-body">
 		<p class="text-lg">

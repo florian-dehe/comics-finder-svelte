@@ -18,7 +18,7 @@ model Author {
 
 model Editor {
   id         Int          @id @default(autoincrement())
-  name       String @unique
+  name       String       @unique
   Collection Collection[]
 }
 
@@ -47,6 +47,7 @@ model Comic {
   volume      Int
   releaseDate DateTime
   pages       Int
+  coverUrl    String @default("")
 
   updatedAt DateTime @updatedAt
 

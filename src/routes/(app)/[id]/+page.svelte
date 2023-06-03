@@ -9,7 +9,7 @@
 <div class="container p-6 mx-auto w-10/12 xl:w-2/3">
 	<div class="flex flex-col lg:flex-row lg:justify-center gap-4">
 		<figure class="lg:w-5/12 w-5/6 mx-auto">
-			<img src={data.comic?.isbn} alt="Cover img" class="rounded-xl shadow-xl lg:mx-0 w-full" />
+			<img src={data.comic?.coverUrl} alt="Cover img" class="rounded-xl shadow-xl lg:mx-0 w-full" />
 		</figure>
 		<div class="card bg-base-100 shadow-xl flex-auto">
 			<div class="card-body">
