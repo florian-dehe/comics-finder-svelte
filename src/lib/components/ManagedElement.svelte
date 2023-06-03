@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Editor, Collection, Serie, Author } from '$lib/types/Comic';
+	import type { Editor, Collection, Series, Author } from '@prisma/client';
 
-	export let elementData: Editor | Collection | Serie | Author;
+	export let elementData: Editor | Collection | Series | Author;
 	export let contains: number;
 	export let formaction: string;
 </script>

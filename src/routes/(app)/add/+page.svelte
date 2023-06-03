@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
+	import { enhance } from '$app/forms';
 	import SveltyPicker from 'svelty-picker';
 	import SelectWithAdd from '$lib/components/SelectWithAdd.svelte';
 	import NewEditorModal from '$lib/components/modals/NewEditorModal.svelte';
@@ -18,19 +19,20 @@
 	let series_id = -1;
 	let authors_id: number[] = [];
 
+	//TODO: This should be handled with API routes hitting the database
 	const collectionsForCurrentEditor = (id_editor: number) =>
-		data.collections.filter((col) => col.editor == id_editor);
+		data.collections.filter((col) => col.editorId == id_editor);
 	const seriesForCurrentCollection = (id_collection: number) =>
-		data.series.filter((series) => series.collection == id_collection);
+		data.series.filter((series) => series.collectionId == id_collection);
 </script>
 
 <div class="p-7 w-5/6 mx-auto">
-	<form method="post" action="?/add">
+	<form method="post" action="?/add" use:enhance>
 		{#if form?.success}
 			<AlertSuccess msg="Your comic has been successfully added !" />
 		{:else if form?.editorSuccess}
 			<AlertSuccess msg="Your editor has been successfully added !" />
-		{:else if form?.collectionSucess}
+		{:else if form?.collectionSuccess}
 			<AlertSuccess msg="Your collection has been successfully added !" />
 		{:else if form?.seriesSuccess}
 			<AlertSuccess msg="Your series has been successfully added !" />

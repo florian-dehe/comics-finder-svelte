@@ -28,15 +28,15 @@
 		</div>
 	</div>
 	<div class="navbar-center">
-        <div class="lg:flex flex-row gap-1 hidden">
-            <div class="form-control">
-			    <input type="text" placeholder="Search" class="input input-bordered" />
-		    </div>
-            <button class="btn btn-ghost">
+		<div class="lg:flex flex-row gap-1 hidden">
+			<div class="form-control">
+				<input type="text" placeholder="Search" class="input input-bordered" />
+			</div>
+			<button class="btn btn-ghost">
 				<SearchIcon />
 			</button>
-        </div>
-		
+		</div>
+
 		<a class="btn btn-ghost normal-case text-xl lg:hidden" href="/">Comics Finder</a>
 	</div>
 	<div class="navbar-end">
