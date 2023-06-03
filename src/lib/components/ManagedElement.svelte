@@ -1,14 +1,14 @@
 <script lang="ts">
-	import type { Editor, Collection, Serie, Author } from '$lib/types/Comic';
+	import type { Editor, Collection, Series, Author } from '@prisma/client';
 
-	export let elementData: Editor | Collection | Serie | Author;
+	export let elementData: Editor | Collection | Series | Author;
 	export let contains: number;
 	export let formaction: string;
 </script>
 
 <div class="alert bg-base-100 border-2 border-base-300 p-2">
 	<div class="flex flex-row justify-between w-full">
-        <h3 class="font-semibold">
+		<h3 class="font-semibold">
 			{elementData.name} <span class="font-medium"> ({contains} elements)</span>
 		</h3>
 		<form action={formaction} method="post">

@@ -1,26 +1,27 @@
+import prisma from '$lib/prisma';
 import { fail } from '@sveltejs/kit';
-import { makeDelete, makePost } from './common';
 
-export const newEditorFormAction = async function (formData: FormData, token: string) {
-	const dataToSend = {
-		name: formData.get('editor_name')
-	};
-
-	const res = await makePost('/editors/', dataToSend, token);
-
-	if (res.status != 201) {
-		return fail(res.status, { editorError: true });
-	} else {
-		return { editorSuccess: true };
+export const newEditorFormAction = async (formData: FormData) => {
+	const name = formData.get('editor_name');
+	if (!name || typeof name != 'string') {
+		return fail(400, { editorError: true });
 	}
+	await prisma.editor.create({
+		data: {
+			name: String(name)
+		}
+	});
+
+	return { editorSuccess: true };
 };
 
-export const removeEditorFormAction = async (formData: FormData, token: string) => {
-	const res = await makeDelete(`/editors/${formData.get('id')}/`, token);
-
-	if (res.status != 204) {
-		return fail(res.status, { editorError: true });
-	} else {
-		return { editorSuccess: true };
+export const removeEditorFormAction = async (formData: FormData) => {
+	const editorId = formData.get('id');
+	if (!editorId) {
+		return fail(400, { editorError: true });
 	}
+
+	await prisma.editor.delete({ where: { id: Number(editorId) } });
+
+	return { editorSuccess: true };
 };

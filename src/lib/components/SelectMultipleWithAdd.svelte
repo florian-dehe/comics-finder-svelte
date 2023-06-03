@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Author } from '$lib/types/Comic';
+	import type { Author } from '@prisma/client';
 	import MultiSelect from 'svelte-multiselect';
 
 	export let options: Author[];
@@ -16,8 +16,15 @@
 </script>
 
 <div class="flex flex-row gap-x-2 w-full">
-    <div class="flex-auto">
-	    <MultiSelect {id} {name} bind:selected={values} options={optionsToSelect} {placeholder} outerDivClass="h-full" />
-    </div>
+	<div class="flex-auto">
+		<MultiSelect
+			{id}
+			{name}
+			bind:selected={values}
+			options={optionsToSelect}
+			{placeholder}
+			outerDivClass="h-full"
+		/>
+	</div>
 	<a class="btn btn-success" href="#{modalId}">New</a>
 </div>

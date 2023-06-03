@@ -1,0 +1,38 @@
+[
+	{
+		"isbn": 9782365777865,
+		"title": "Année 2 - 1ère partie",
+		"description": " La guerre est déclarée entre fidèles et dissidents au régime totalitaire instauré par l'Homme d'acier, et chacun doit à présent choisir son camp. Avec la disparition d'Arrow et un Batman hors-jeu, Black Canary tente tant bien que mal de rassembler sa propre équipe. Mais tandis que sur Terre, la poigne de fer de Superman se resserre, aux confins de la galaxie, une autre menace s'éveille.",
+		"volume": 3,
+		"releaseDate": "2015-08-25",
+		"pages": 144,
+		"authors": ["Tom Taylor", "Mike S. Miller"],
+		"series": {
+			"name": "Injustice",
+			"collection": {
+				"name": "Urban Games",
+				"editor": {
+					"name": "DC"
+				}
+			}
+		}
+	},
+	{
+		"isbn": 9782365777866,
+		"title": "Année 2 - 2eme partie",
+		"description": "Test",
+		"volume": 3,
+		"releaseDate": "2015-08-26",
+		"pages": 145,
+		"authors": ["Tom Taylor", "Mike S. Miller"],
+		"series": {
+			"name": "Injustice",
+			"collection": {
+				"name": "Urban Games",
+				"editor": {
+					"name": "DC"
+				}
+			}
+		}
+	}
+]

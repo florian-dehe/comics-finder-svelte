@@ -18,7 +18,7 @@
 					{#each data.editors as editor}
 						<ManagedElement
 							elementData={editor}
-							contains={data.collections.filter((col) => col.editor_info.id == editor.id).length}
+							contains={data.collections.filter((col) => col.editorId == editor.id).length}
 							formaction="?/remove_editor"
 						/>
 					{/each}
@@ -35,8 +35,7 @@
 					{#each data.collections as collection}
 						<ManagedElement
 							elementData={collection}
-							contains={data.series.filter((series) => series.collection_info.id == collection.id)
-								.length}
+							contains={data.series.filter((series) => series.collectionId == collection.id).length}
 							formaction="?/remove_collection"
 						/>
 					{/each}
@@ -53,7 +52,7 @@
 					{#each data.series as series}
 						<ManagedElement
 							elementData={series}
-							contains={data.comics.filter((comic) => comic.serie_info.id == series.id).length}
+							contains={data.comics.filter((comic) => comic.seriesId == series.id).length}
 							formaction="?/remove_series"
 						/>
 					{/each}
@@ -70,7 +69,7 @@
 					{#each data.authors as author}
 						<ManagedElement
 							elementData={author}
-							contains={data.comics.filter((comic) => comic.authors_info.includes(author)).length}
+							contains={author.Comic.length}
 							formaction="?/remove_author"
 						/>
 					{/each}

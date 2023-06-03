@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PlusIcon, BookIcon, LogOutIcon, MenuIcon } from 'svelte-feather-icons';
+	import { PlusIcon, BookIcon, LogOutIcon, MenuIcon, SearchIcon } from 'svelte-feather-icons';
 </script>
 
 <div class="navbar bg-base-100">
@@ -12,15 +12,15 @@
 			<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 			<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
 				<li>
-                    <a href="/add">
-                        <PlusIcon /> Add a comic
-                    </a>
-                </li>
+					<a href="/add">
+						<PlusIcon /> Add a comic
+					</a>
+				</li>
 				<li>
-                    <a href="/manage">
-                       <BookIcon /> Manage library
-                    </a>
-                </li>
+					<a href="/manage">
+						<BookIcon /> Manage library
+					</a>
+				</li>
 			</ul>
 		</div>
 		<div class="hidden lg:block">
@@ -28,9 +28,15 @@
 		</div>
 	</div>
 	<div class="navbar-center">
-		<div class="form-control hidden lg:block">
-			<input type="text" placeholder="Search" class="input input-bordered" />
+		<div class="lg:flex flex-row gap-1 hidden">
+			<div class="form-control">
+				<input type="text" placeholder="Search" class="input input-bordered" />
+			</div>
+			<button class="btn btn-ghost">
+				<SearchIcon />
+			</button>
 		</div>
+
 		<a class="btn btn-ghost normal-case text-xl lg:hidden" href="/">Comics Finder</a>
 	</div>
 	<div class="navbar-end">
@@ -42,11 +48,9 @@
 				<BookIcon />
 			</a>
 		</div>
-		<form action="/logout" method="post">
-			<button type="submit" class="btn btn-outline btn-primary">
-				<LogOutIcon />
-			</button>
-		</form>
+        <a type="button" class="btn btn-outline btn-primary" href="/logout">
+            <LogOutIcon />
+        </a>
 	</div>
 </div>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
+	import { enhance } from '$app/forms';
 	import SveltyPicker from 'svelty-picker';
 	import SelectWithAdd from '$lib/components/SelectWithAdd.svelte';
 	import NewEditorModal from '$lib/components/modals/NewEditorModal.svelte';
@@ -18,19 +19,20 @@
 	let series_id = -1;
 	let authors_id: number[] = [];
 
+	//TODO: This should be handled with API routes hitting the database
 	const collectionsForCurrentEditor = (id_editor: number) =>
-		data.collections.filter((col) => col.editor == id_editor);
+		data.collections.filter((col) => col.editorId == id_editor);
 	const seriesForCurrentCollection = (id_collection: number) =>
-		data.series.filter((series) => series.collection == id_collection);
+		data.series.filter((series) => series.collectionId == id_collection);
 </script>
 
 <div class="p-7 w-5/6 mx-auto">
-	<form method="post" action="?/add">
+	<form method="post" action="?/add" use:enhance>
 		{#if form?.success}
 			<AlertSuccess msg="Your comic has been successfully added !" />
 		{:else if form?.editorSuccess}
 			<AlertSuccess msg="Your editor has been successfully added !" />
-		{:else if form?.collectionSucess}
+		{:else if form?.collectionSuccess}
 			<AlertSuccess msg="Your collection has been successfully added !" />
 		{:else if form?.seriesSuccess}
 			<AlertSuccess msg="Your series has been successfully added !" />
@@ -46,7 +48,7 @@
 			<AlertError msg="We could'nt add your collection !" />
 		{:else if form?.seriesError}
 			<AlertError msg="We could'nt add your series !" />
-			*{:else if form?.authorError}
+		{:else if form?.authorError}
 			<AlertError msg="We could'nt add your author !" />
 		{/if}
 
@@ -113,11 +115,16 @@
 					<label class="label" for="id_description">
 						<span class="label-text font-bold text-lg">Description</span>
 					</label>
-					<textarea class="textarea textarea-bordered" id="id_description" name="description" rows="4" />
+					<textarea
+						class="textarea textarea-bordered"
+						id="id_description"
+						name="description"
+						rows="4"
+					/>
 				</div>
 			</div>
 
-            <!-- Second column --->
+			<!-- Second column --->
 			<div class="container">
 				<!-- Volume -->
 				<div class="form-control w-full">
@@ -183,9 +190,9 @@
 						modalId="author_modal"
 					/>
 				</div>
-			</div>    
+			</div>
 		</div>
-        <div class="flex justify-center m-3">
+		<div class="flex justify-center m-3">
 			<input type="submit" value="Add new comic" class="btn btn-success my-3" />
 		</div>
 	</form>
