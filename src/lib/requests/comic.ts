@@ -45,7 +45,9 @@ export const newComicFormAction = async function (formData: FormData) {
 				}
 			},
 			authors: {
-				connect: authorsToConnect
+				connect: authorsToConnect.map((authorId: number) => {
+					return { id: authorId };
+				})
 			}
 		}
 	});

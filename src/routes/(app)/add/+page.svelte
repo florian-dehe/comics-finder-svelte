@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ActionData, PageData } from './$types';
+	import { enhance } from '$app/forms';
 	import SveltyPicker from 'svelty-picker';
 	import SelectWithAdd from '$lib/components/SelectWithAdd.svelte';
 	import NewEditorModal from '$lib/components/modals/NewEditorModal.svelte';
@@ -26,7 +27,7 @@
 </script>
 
 <div class="p-7 w-5/6 mx-auto">
-	<form method="post" action="?/add">
+	<form method="post" action="?/add" use:enhance>
 		{#if form?.success}
 			<AlertSuccess msg="Your comic has been successfully added !" />
 		{:else if form?.editorSuccess}
