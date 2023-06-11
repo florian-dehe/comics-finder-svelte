@@ -37,6 +37,7 @@ async function main() {
 				volume: c.volume,
 				releaseDate: new Date(c.releaseDate),
 				pages: c.pages,
+                coverUrl: c.coverUrl,
 				authors: {
 					connect: author_ids.map((author_id) => {
 						return { id: author_id };
