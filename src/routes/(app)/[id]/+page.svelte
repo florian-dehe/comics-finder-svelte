@@ -6,12 +6,12 @@
 	export let data: PageData;
 </script>
 
-<div class="container p-6 mx-auto w-10/12 xl:w-2/3">
-	<div class="flex flex-col lg:flex-row lg:justify-center gap-4">
-		<figure class="lg:w-5/12 w-5/6 mx-auto">
+<div class="container p-6 mx-auto">
+	<div class="flex flex-col lg:flex-row lg:justify-items-stretch gap-4">
+		<figure class="mx-auto grow">
 			<img src={data.comic?.coverUrl} alt="Cover img" class="rounded-xl shadow-xl lg:mx-0 w-full" />
 		</figure>
-		<div class="card bg-base-100 shadow-xl flex-auto">
+		<div class="card bg-base-100 shadow-xl flex-auto grow lg:w-1/2">
 			<div class="card-body">
 				<div class="flex flex-row justify-between">
 					<h2 class="text-3xl font-semibold">{data.comic?.title}</h2>
@@ -40,7 +40,7 @@
 					</h3>
 				</div>
 
-				<div class="max-w-md my-3">
+				<div class="my-3">
 					<p>
 						<span class="font-bold">Description</span>
 						<br />
